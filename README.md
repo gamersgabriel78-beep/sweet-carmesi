@@ -1,1 +1,308 @@
-.
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sweet Carmesi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+background:#fafafa;
+color:#222;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+header{
+background:white;
+padding:18px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #eee;
+position:sticky;
+top:0;
+z-index:10;
+}
+
+.brand{
+font-family:'Great Vibes', cursive !important;
+font-size:42px;
+letter-spacing:1px;
+text-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+
+.sweet{ color:#b91c1c; }
+.carmesi{ color:#1e3a8a; margin-left:6px; }
+
+.container{max-width:1100px;margin:auto;padding:40px 20px}
+
+.hero{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+margin-bottom:50px;
+}
+
+.hero img{width:100%;border-radius:16px}
+
+.products{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:16px;
+box-shadow:0 8px 24px rgba(0,0,0,0.06);
+text-align:center;
+}
+
+.product-img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:12px;
+margin-bottom:15px;
+}
+
+.price{font-size:20px;font-weight:bold;margin:10px 0;color:#b3126a}
+
+.qty{display:flex;justify-content:center;gap:10px;margin:10px 0}
+
+button{
+background:#b3126a;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:8px;
+cursor:pointer;
+transition:0.2s;
+}
+
+button:hover{opacity:0.9}
+
+.cart{
+position:fixed;
+right:20px;
+top:90px;
+width:260px;
+background:white;
+padding:20px;
+border-radius:16px;
+box-shadow:0 8px 24px rgba(0,0,0,0.1);
+}
+
+.section-title{
+margin:50px 0 20px;
+font-size:22px;
+font-weight:bold;
+}
+
+.reviews{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:20px;
+}
+
+.review{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+footer{text-align:center;padding:30px;color:#777;margin-top:40px}
+
+@media(max-width:800px){
+.hero{grid-template-columns:1fr}
+.products{grid-template-columns:1fr}
+.reviews{grid-template-columns:1fr}
+.cart{position:static;width:100%;margin-top:30px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="brand">
+<span class="sweet">Sweet</span>
+<span class="carmesi">Carmesi</span>
+</div>
+<div id="cartCount">🛒 0</div>
+</header>
+
+<div class="container">
+
+<section class="hero">
+<img src="https://plus.unsplash.com/premium_photo-1663850873373-01f878c4e61c?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+<div>
+<h1>Mermeladas artesanales premium</h1>
+<p>
+Sweet Carmesi es una marca dominicana especializada en mermeladas gourmet
+de frutos rojos combinadas con ingredientes selectos.
+Cada frasco está elaborado para ofrecer intensidad, equilibrio y elegancia.
+</p>
+</div>
+</section>
+
+<div class="section-title">Nuestros sabores</div>
+
+<section class="products">
+
+<div class="card">
+<img class="product-img" src="https://images.unsplash.com/photo-1664350454685-a3298c47fb58?q=80&w=726&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+<h3>Mermelada con Maní</h3>
+<p>Textura cremosa con contraste dulce-salado.</p>
+<div class="price">RD$ 350</div>
+
+<div class="qty">
+<button onclick="cambiarQty('mani',-1)">-</button>
+<span id="qty-mani">1</span>
+<button onclick="cambiarQty('mani',1)">+</button>
+</div>
+
+<button onclick="agregarCarrito('Mermelada con Maní',350,'mani')">
+Agregar al carrito
+</button>
+</div>
+
+<div class="card">
+<img class="product-img" src="https://images.unsplash.com/photo-1590083052217-3c5ca32f3906?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+<h3>Mermelada con Ron</h3>
+<p>Aroma profundo con notas cálidas y sofisticadas.</p>
+<div class="price">RD$ 420</div>
+
+<div class="qty">
+<button onclick="cambiarQty('ron',-1)">-</button>
+<span id="qty-ron">1</span>
+<button onclick="cambiarQty('ron',1)">+</button>
+</div>
+
+<button onclick="agregarCarrito('Mermelada con Ron',420,'ron')">
+Agregar al carrito
+</button>
+</div>
+
+</section>
+
+<div class="cart">
+<h3>Carrito</h3>
+<div id="cartItems">Vacío</div>
+<hr>
+<strong>Total: RD$ <span id="total">0</span></strong>
+<br><br>
+<button onclick="abrirPago()">Finalizar compra</button>
+</div>
+
+</div>
+
+<footer>Sweet Carmesi — Intensidad que se saborea</footer>
+
+<script>
+let carrito=[]
+let cantidades={mani:1,ron:1}
+
+function cambiarQty(id,c){
+cantidades[id]=Math.max(1,cantidades[id]+c)
+document.getElementById("qty-"+id).textContent=cantidades[id]
+}
+
+function agregarCarrito(nombre,precio,id){
+carrito.push({nombre,precio,cantidad:cantidades[id]})
+actualizarCarrito()
+}
+
+function actualizarCarrito(){
+const items=document.getElementById("cartItems")
+const totalEl=document.getElementById("total")
+const count=document.getElementById("cartCount")
+
+if(carrito.length===0){
+items.textContent="Vacío"
+totalEl.textContent="0"
+count.textContent="🛒 0"
+return
+}
+
+items.innerHTML=""
+let total=0
+let cantidadTotal=0
+
+carrito.forEach(p=>{
+const linea=document.createElement("div")
+linea.textContent=p.nombre+" x"+p.cantidad
+items.appendChild(linea)
+total+=p.precio*p.cantidad
+cantidadTotal+=p.cantidad
+})
+
+totalEl.textContent=total
+count.textContent="🛒 "+cantidadTotal
+}
+
+function abrirPago(){
+if(carrito.length===0){
+alert("El carrito está vacío")
+return
+}
+
+const total=document.getElementById("total").textContent
+const numeroPedido=Math.floor(Math.random()*900000+100000)
+
+const pago=window.open("", "_blank")
+
+pago.document.body.innerHTML=`
+<div style="font-family:Arial;padding:40px;max-width:400px;margin:auto">
+
+<h2>Finalizar compra</h2>
+
+<label>Nombre completo</label>
+<input style="width:100%;padding:10px;margin:8px 0">
+
+<label>Dirección de entrega</label>
+<input style="width:100%;padding:10px;margin:8px 0">
+
+<label>Teléfono</label>
+<input style="width:100%;padding:10px;margin:8px 0">
+
+<label>Número de tarjeta</label>
+<input style="width:100%;padding:10px;margin:8px 0">
+
+<label>Fecha expiración</label>
+<input style="width:100%;padding:10px;margin:8px 0">
+
+<label>CVV</label>
+<input style="width:100%;padding:10px;margin:8px 0">
+
+<h3>Total: RD$ ${total}</h3>
+
+<button id="pagarBtn"
+style="width:100%;padding:12px;background:#b3126a;color:white;border:none;border-radius:8px">
+Pagar ahora
+</button>
+
+<div id="estado" style="margin-top:20px;font-weight:bold;text-align:center"></div>
+</div>
+`
+
+pago.document.getElementById("pagarBtn").onclick=function(){
+const estado=pago.document.getElementById("estado")
+estado.textContent="Procesando pago..."
+
+setTimeout(()=>{
+estado.innerHTML="✅ Pago aprobado<br>Pedido #"+numeroPedido+"<br><br>Gracias por comprar en Sweet Carmesi"
+},2000)
+}
+}
+</script>
+
+</body>
+</html>
